@@ -1,4 +1,12 @@
+/*
+  Import Dependencies
+*/
 import React from 'react';
+
+/*
+  Import Components
+*/
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor() {
@@ -8,7 +16,7 @@ class App extends React.Component {
   render() {
     return (
     <div>
-        <h1>App.js</h1>
+        <Header pathname={this.props.location.pathname} />
         <div className=''>
           {this.props.children}
         </div>
