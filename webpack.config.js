@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
 	entry: [
 		'babel-polyfill',
-		['.', 'app', 'js', 'index.js'].join(path.sep)
+		['.', 'app', 'js', 'Router.js'].join(path.sep)
 	],
 	resolve: {
 		modulesDirectories: ['node_modules'],
