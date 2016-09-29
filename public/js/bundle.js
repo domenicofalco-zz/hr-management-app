@@ -35485,19 +35485,57 @@
 	  function Home() {
 	    _classCallCheck(this, Home);
 
-	    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+	    _this.state = { json: null };
+	    _this.submitJson = _this.submitJson.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(Home, [{
+	    key: 'submitJson',
+	    value: function submitJson(e) {
+	      var _this2 = this;
+
+	      e.preventDefault();
+	      var file = this.refs.file.files[0];
+	      var regex = /\.(json)$/i;
+	      var reader = new FileReader();
+
+	      if (regex.test(file.name)) {
+
+	        reader.onload = function (event) {
+	          _this2.setState({
+	            json: JSON.parse(event.target.result)
+	          });
+	        };
+
+	        reader.readAsText(file);
+	      } else {
+	        alert('The file must be a JSON type');
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('yeah', this.state.json);
 	      return _react2.default.createElement(
-	        'div',
-	        null,
+	        'form',
+	        { className: 'main-col' },
 	        _react2.default.createElement(
-	          'h4',
+	          'label',
 	          null,
-	          'Homepage'
+	          'Upload employees JSON file'
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'file', ref: 'file', name: 'add-json-file', id: 'add-json-file' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.submitJson },
+	          'submit'
 	        )
 	      );
 	    }
