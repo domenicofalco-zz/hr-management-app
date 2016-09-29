@@ -1,3 +1,6 @@
+/* Import CSS */
+require('../less/style.less');
+
 /*
   Import Dependencies
 */
@@ -19,11 +22,6 @@ import App from './App';
 import Home from './components/Home';
 import EmployeesView from './components/EmployeesView';
 import PageNotFound from './components/PageNotFound';
-
-
-/* Import CSS */
-//import css from  './styles/style.styl';
-
 
 ReactDOM.render(
   <Router history={browserHistory}>
