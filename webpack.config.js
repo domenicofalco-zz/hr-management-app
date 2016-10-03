@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
 	entry: [
 		'babel-polyfill',
-		['.', 'app', 'js', 'Router.js'].join(path.sep)
+		['.', 'app', 'js', 'main.js'].join(path.sep)
 	],
 	resolve: {
 		modulesDirectories: ['node_modules'],
@@ -25,7 +25,9 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: ['babel'],
 				query: {
-					presets: ['react', 'es2015']
+					cacheDirectory: true,
+					presets: ['react', 'es2015', 'stage-0'],
+					plugins: ['transform-decorators-legacy']
 				}
 			},
 			{
