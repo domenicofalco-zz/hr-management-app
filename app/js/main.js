@@ -30,7 +30,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={Home} />
-        <Route path='employees' component={EmployeesView}></Route>
+        <Route path='employees' component={EmployeesView} />
         <Route path='*' component={PageNotFound} />
       </Route>
     </Router>

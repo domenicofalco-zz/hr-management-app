@@ -36659,9 +36659,9 @@
 	            'HR Management System'
 	          ),
 	          isActive && _react2.default.createElement(
-	            'a',
-	            { href: '#' },
-	            'Load JSON'
+	            'span',
+	            null,
+	            'qui va il bottone per un nuovo upload'
 	          )
 	        )
 	      );
@@ -36865,7 +36865,7 @@
 	  _createClass(EmployeesView, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props.json);
+	      console.log('json ->', this.props.json);
 	      return _react2.default.createElement(
 	        'div',
 	        null,

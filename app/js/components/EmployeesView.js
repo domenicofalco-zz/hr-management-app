@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 })
 class EmployeesView extends React.Component {
   render() {
-    console.log(this.props.json);
+    console.log('json ->', this.props.json);
     return (
       <div>
         <h4>EmployeesView page</h4>

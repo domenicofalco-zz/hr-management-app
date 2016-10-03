@@ -10,7 +10,7 @@ class Header extends React.Component {
         <header className='main-col'>
           <h1>HR Management System</h1>
           {isActive &&
-            <a href='#'>Load JSON</a>
+            <span>qui va il bottone per un nuovo upload</span>
           }
         </header>
       </div>
