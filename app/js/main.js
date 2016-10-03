@@ -6,19 +6,16 @@ require('../less/style.less');
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import 'babel-polyfill';
 
-/*
-  Reducers
-*/
-import uploadJson from './reducers/uploadJson';
 
 /*
   Data store
 */
-import store from './store';
+
+import store, { history } from './store';
 
 /*
   Import Components
@@ -30,7 +27,7 @@ import PageNotFound from './components/PageNotFound';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route path='employees' component={EmployeesView}></Route>

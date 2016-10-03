@@ -1,13 +1,15 @@
 import React from 'react';
 import { actionUploadJson, actionUploadJsonError } from '../actions/actionCreators';
+import { Link } from 'react-router'
 import { connect } from 'react-redux';
+
 
 @connect((store) => {
   return {
-    json: store.jsonEmployees,
-    isLoaded: store.isLoaded,
-    failed: store.failed,
-    errorMsg: store.errorMsg,
+    json: store.employees.jsonEmployees,
+    isLoaded: store.employees.isLoaded,
+    failed: store.employees.failed,
+    errorMsg: store.employees.errorMsg,
   };
 })
 class Home extends React.Component {
@@ -41,7 +43,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props.isLoaded);
     return (
       <form className='main-col'>
         <label>Upload employees JSON file</label>
@@ -49,7 +50,7 @@ class Home extends React.Component {
         <input type='file' ref='file' name='add-json-file' onChange={this.submitJson} id='add-json-file' />
         <br /><br />
         {this.props.isLoaded &&
-          <a href='#' onClick={this.submitJson}>Load file</a>
+          <Link to={'employees'}>Load file</Link>
         }
         {this.props.failed &&
           <div>{this.props.errorMsg}</div>

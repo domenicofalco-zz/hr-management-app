@@ -1,9 +1,11 @@
-export default function uploadJson(state = {
+let initialState = {
   jsonEmployees: null,
   isLoaded: false,
   failed: false,
   errorMsg: null
-}, action) {
+};
+
+function employees(state = initialState, action) {
 
   switch (action.type) {
 
@@ -24,3 +26,5 @@ export default function uploadJson(state = {
   }
 
 }
+
+export default employees;

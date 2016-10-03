@@ -1,9 +1,4 @@
-import uploadJson from './uploadJson';
-import { combineReducers } from 'redux';
-
-const rootReducer = combineReducers({
-  uploadJson
-  // routing: routerReducer
-});
-
-export default rootReducer;
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+import employees from './uploadJsonReducer';
+export default combineReducers({ employees, routing: routerReducer });
