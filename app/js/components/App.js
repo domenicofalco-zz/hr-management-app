@@ -6,12 +6,11 @@ import React from 'react';
 /*
   Import Components
 */
-import Header from './components/Header';
+import Header from './Header';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { isJsonLoaded: false };
   }
   render() {
     return (
