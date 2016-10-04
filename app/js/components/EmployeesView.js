@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { history } from '../store';
-import _ from 'lodash';
+import EmployeesViewList from './EmployeesViewList';
 
 //fake json
-let json = {
+let jsonEmployees = {
    "Jonas":{
       "position":"CTO",
       "employees":[
@@ -50,7 +50,7 @@ let json = {
 
 @connect((store) => {
   return {
-    json: json,
+    json: store.employees.jsonEmployees,
     isLoaded: store.employees.isLoaded
   };
 })
@@ -62,7 +62,7 @@ class EmployeesView extends React.Component {
   componentWillMount() {
     // redirect to homepage is no JSON is available
     if(!this.props.isLoaded) {
-      //history.push('/');
+      history.push('/');
     }
   }
 
@@ -79,10 +79,10 @@ class EmployeesView extends React.Component {
 
       i++;
       html.push(
-        <div key={i} className={'employees-table__td level-' + indentation}>
+        <li key={i} className={`employees-table__td level-${indentation}`}>
           <div className='name'>{name}</div>
           <div className='position'>{pos}</div>
-        </div>
+        </li>
       );
 
     	employeesJson[name].employees.forEach((e) => {
@@ -90,7 +90,6 @@ class EmployeesView extends React.Component {
           team = name;
           indentation++;
         }
-        console.log(e);
         print(e);
       });
     }
@@ -100,9 +99,7 @@ class EmployeesView extends React.Component {
     return (
       <div>
         <h4>EmployeesView page</h4>
-        <div className='employees-table'>
-          {html}
-        </div>
+        <EmployeesViewList items={html} />
       </div>
     );
   }
