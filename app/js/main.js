@@ -1,4 +1,5 @@
 /* Import CSS */
+require('../less/normalize.less');
 require('../less/style.less');
 
 /*
