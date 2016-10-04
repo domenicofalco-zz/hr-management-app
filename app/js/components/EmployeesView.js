@@ -4,7 +4,7 @@ import { history } from '../store';
 import EmployeesViewList from './EmployeesViewList';
 
 //fake json
-let json = {
+let jsonEmployees = {
    "Jonas":{
       "position":"CTO",
       "employees":[
@@ -50,7 +50,7 @@ let json = {
 
 @connect((store) => {
   return {
-    json: json,
+    json: store.employees.jsonEmployees,
     isLoaded: store.employees.isLoaded
   };
 })
@@ -62,7 +62,7 @@ class EmployeesView extends React.Component {
   componentWillMount() {
     // redirect to homepage is no JSON is available
     if(!this.props.isLoaded) {
-      //history.push('/');
+      history.push('/');
     }
   }
 

@@ -37542,7 +37542,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	//fake json
-	var json = {
+	var jsonEmployees = {
 	  "Jonas": {
 	    "position": "CTO",
 	    "employees": [{
@@ -37576,7 +37576,7 @@
 
 	var EmployeesView = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {
-	    json: json,
+	    json: store.employees.jsonEmployees,
 	    isLoaded: store.employees.isLoaded
 	  };
 	}), _dec(_class = function (_React$Component) {
@@ -37593,7 +37593,7 @@
 	    value: function componentWillMount() {
 	      // redirect to homepage is no JSON is available
 	      if (!this.props.isLoaded) {
-	        //history.push('/');
+	        _store.history.push('/');
 	      }
 	    }
 	  }, {
