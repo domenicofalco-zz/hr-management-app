@@ -1,7 +1,15 @@
 import React from 'react';
-import { actionUploadJson, actionUploadJsonError } from '../actions/actionCreators';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
+
+/*
+  Redux Actions
+*/
+import {
+  actionUploadJson,
+  actionUploadJsonError,
+  actionClearState
+} from '../actions/actionCreators';
 
 
 @connect((store) => {
@@ -40,6 +48,10 @@ class Home extends React.Component {
       this.props.dispatch(actionUploadJsonError('The file must be a JSON type!'));
     }
 
+  }
+
+  componentWillMount() {
+    this.props.dispatch(actionClearState());
   }
 
   render() {

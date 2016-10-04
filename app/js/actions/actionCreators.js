@@ -16,7 +16,14 @@ function uploadJsonError(msg) {
   }
 }
 
+function clearstate(json) {
+  return {
+    type: 'REMOVE_JSON'
+  }
+}
+
 const actionUploadJson = (json) => uploadJson(json);
 const actionUploadJsonError = (msg) => uploadJsonError(msg);
+const actionClearState = () => clearstate();
 
-export { actionUploadJson, actionUploadJsonError };
+export { actionUploadJson, actionUploadJsonError, actionClearState };

@@ -19,6 +19,10 @@ function employees(state = initialState, action) {
       return newState;
     }
 
+    case 'REMOVE_JSON': {
+      return initialState;
+    }
+
     default: {
       return state
     }
