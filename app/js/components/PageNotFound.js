@@ -1,11 +1,16 @@
+/* Dependencies */
 import React from 'react';
+import { history } from '../store';
 
+/**/
 class PageNotFound extends React.Component {
+  componentWillMount() {
+    history.push('/');
+  }
+
   render() {
     return (
-      <div>
-        <h4>PageNotFound</h4>
-      </div>
+      <div></div>
     );
   }
 }

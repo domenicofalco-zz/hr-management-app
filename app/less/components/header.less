@@ -1,0 +1,41 @@
+.header {
+  position: relative;
+
+  &__container {
+    display: table-cell;
+    margin: 0px auto;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  &__heading {
+    margin-bottom: 50px;
+  }
+  &__title {
+    @size: 60;
+    color: @blue;
+    font-family: @Slabo;
+    font-size: @size * 1px;
+    font-weight: normal;
+    line-height: @size * 1px;
+  }
+  &__subtitle {
+    @size: 16;
+    color: @lightRed;
+    font-family: @PTSans;
+    font-size: @size * 1px;
+    letter-spacing: 1.9px;
+    line-height: @size * 1px;
+  }
+  &__claim {
+    color: @white;
+    font-family: @Bitter;
+    font-size: 18px;
+    line-height: 25px;
+    margin: 0px auto 70px;
+    width: 270px;
+  }
+  &__button {
+    margin: 0px auto;
+  }
+}

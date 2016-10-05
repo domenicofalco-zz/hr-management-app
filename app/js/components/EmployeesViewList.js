@@ -1,3 +1,4 @@
+/* Dependencies */
 import React from 'react';
 import update from 'react-addons-update';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
@@ -6,16 +7,15 @@ const SortableItem = SortableElement(({value}) => <div>{value}</div>);
 
 const SortableList = SortableContainer(({items}) => {
   return (
-    <ul>
+    <div>
       {items.map((value, index) =>
         <SortableItem key={`item-${index}`} index={index} value={value} />
       )}
-    </ul>
+    </div>
   );
 });
 
 class EmployeesViewList extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -36,17 +36,7 @@ class EmployeesViewList extends React.Component {
 
       let items = this.state.items.map((item, i) => {
 
-        if(i === newIndex) {
-
-          return update(item, {
-            props: {
-              className: {
-                $set: oldClass
-              }
-            }
-          });
-
-        } else if(i === oldIndex) {
+        if(i === oldIndex) {
 
           return update(item, {
             props: {

@@ -1,0 +1,74 @@
+body {
+  overflow: hidden;
+}
+
+.global-container {
+  .clearfix;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    clear: both;
+    content: '';
+    display: block;
+    float: none;
+    height: 0px;
+  }
+}
+
+.col {
+  display: table;
+  height: 100%;
+}
+
+.section {
+  position: absolute;
+  right: 5%;
+  top: 0px;
+  width: 50%;
+}
+
+/* background rotated shape */
+.shape {
+  background-color: @green;
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.label {
+  color: @lightBlue;
+  display: block;
+  font-family: @Bitter;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.error {
+  &--red {
+    color: @red;
+    font-family: @Bitter;
+    font-size: 15px;
+  }
+}
+
+/* Class "z-index" generator */
+@zindexNumber: 10;
+
+.generate-zindex(@zindexNumber);
+
+.generate-zindex(@n, @i: 1) when (@i =< @n) {
+  .z@{i} {
+    z-index: @i;
+  }
+  .generate-zindex(@n, (@i + 1));
+}
