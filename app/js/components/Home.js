@@ -1,17 +1,16 @@
+/* Dependencies */
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-/*
-  Redux Actions
-*/
+/* Redux Actions */
 import {
   actionUploadJson,
   actionUploadJsonError,
   actionClearState
 } from '../actions/actionCreators';
 
-
+/**/
 @connect((store) => {
   return {
     json: store.employees.jsonEmployees,
@@ -55,18 +54,23 @@ class Home extends React.Component {
   }
 
   render() {
+    let { isLoaded, failed, errorMsg } = this.props;
+
     return (
-      <form className='main-col'>
-        <label>Upload employees JSON file</label>
-        <br /><br />
-        <input type='file' ref='file' name='add-json-file' onChange={this.submitJson} id='add-json-file' />
-        <br /><br />
-        {this.props.isLoaded &&
-          <Link to={'employees'}>Load file</Link>
-        }
-        {this.props.failed &&
-          <div>{this.props.errorMsg}</div>
-        }
+      <form className='form'>
+
+        <label className='form__label'>Upload employees JSON file</label>
+        <input
+          className='form__input'
+          type='file'
+          ref='file'
+          name='add-json-file'
+          onChange={this.submitJson}
+          id='add-json-file'
+        />
+
+        {isLoaded && <Link to={'employees'}>Load file</Link>}
+        {failed && <div>{errorMsg}</div>}
       </form>
     );
   }

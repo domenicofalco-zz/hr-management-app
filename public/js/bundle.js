@@ -8229,7 +8229,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/* Import CSS */
-	__webpack_require__(717);
+	__webpack_require__(723);
 	__webpack_require__(721);
 
 	/*
@@ -37237,15 +37237,7 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Import Dependencies
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-
-
-	/*
-	  Import Components
-	*/
-
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -37259,14 +37251,23 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
+	      var _props = this.props;
+	      var location = _props.location;
+	      var children = _props.children;
+
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_Header2.default, { pathname: this.props.location.pathname }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: '' },
-	          this.props.children
+	          { className: 'container container--bg-dark' },
+	          _react2.default.createElement(_Header2.default, { pathname: location.pathname })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container container--bg-yellow' },
+	          children
 	        )
 	      );
 	    }
@@ -37313,25 +37314,20 @@
 	  _createClass(Header, [{
 	    key: 'render',
 	    value: function render() {
-
 	      var isActive = this.props.pathname === '/employees';
 
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'wrapper' },
+	        'header',
+	        { className: 'header' },
 	        _react2.default.createElement(
-	          'header',
-	          { className: 'main-col' },
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            'HR Management System'
-	          ),
-	          isActive && _react2.default.createElement(
-	            'span',
-	            null,
-	            'qui va il bottone per un nuovo upload'
-	          )
+	          'h1',
+	          { className: 'header__title' },
+	          'HR Management System'
+	        ),
+	        isActive && _react2.default.createElement(
+	          'span',
+	          null,
+	          'Link upload new file'
 	        )
 	      );
 	    }
@@ -37354,11 +37350,10 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _dec, _class;
+	var _dec, _class; /* Dependencies */
 
-	/*
-	  Redux Actions
-	*/
+
+	/* Redux Actions */
 
 
 	var _react = __webpack_require__(300);
@@ -37379,6 +37374,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/**/
 	var Home = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {
 	    json: store.employees.jsonEmployees,
@@ -37429,28 +37425,37 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _props = this.props;
+	      var isLoaded = _props.isLoaded;
+	      var failed = _props.failed;
+	      var errorMsg = _props.errorMsg;
+
+
 	      return _react2.default.createElement(
 	        'form',
-	        { className: 'main-col' },
+	        { className: 'form' },
 	        _react2.default.createElement(
 	          'label',
-	          null,
+	          { className: 'form__label' },
 	          'Upload employees JSON file'
 	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'file', ref: 'file', name: 'add-json-file', onChange: this.submitJson, id: 'add-json-file' }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        this.props.isLoaded && _react2.default.createElement(
+	        _react2.default.createElement('input', {
+	          className: 'form__input',
+	          type: 'file',
+	          ref: 'file',
+	          name: 'add-json-file',
+	          onChange: this.submitJson,
+	          id: 'add-json-file'
+	        }),
+	        isLoaded && _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: 'employees' },
 	          'Load file'
 	        ),
-	        this.props.failed && _react2.default.createElement(
+	        failed && _react2.default.createElement(
 	          'div',
 	          null,
-	          this.props.errorMsg
+	          errorMsg
 	        )
 	      );
 	    }
@@ -43484,46 +43489,8 @@
 	exports.default = PageNotFound;
 
 /***/ },
-/* 717 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(718);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(720)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./normalize.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./normalize.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 718 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(719)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "html {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  vertical-align: baseline;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden],\ntemplate {\n  display: none;\n}\na {\n  background: transparent;\n}\na:active,\na:hover {\n  outline: 0;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\nmark {\n  background: #ff0;\n  color: #000;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsup {\n  top: -0.5em;\n}\nsub {\n  bottom: -0.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 1em 40px;\n}\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0;\n}\npre {\n  overflow: auto;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nbutton {\n  overflow: visible;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\nhtml input[type=\"button\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\nbutton input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\ninput {\n  line-height: normal;\n}\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\nlegend {\n  border: 0;\n  padding: 0;\n}\ntextarea {\n  overflow: auto;\n}\noptgroup {\n  font-weight: bold;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\ntd,\nth {\n  padding: 0;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 717 */,
+/* 718 */,
 /* 719 */
 /***/ function(module, exports) {
 
@@ -43866,7 +43833,47 @@
 
 
 	// module
-	exports.push([module.id, "/*\n  Generic\n*/\nul {\n  list-style: none;\n  margin: 0px;\n  padding: 0px;\n}\n/*\n  Class \"indentation\" generator\n*/\n.level-1 {\n  padding-left: 30px;\n}\n.level-2 {\n  padding-left: 50px;\n}\n.level-3 {\n  padding-left: 70px;\n}\n.level-4 {\n  padding-left: 90px;\n}\n.level-5 {\n  padding-left: 110px;\n}\n.level-6 {\n  padding-left: 130px;\n}\n.level-7 {\n  padding-left: 150px;\n}\n.level-8 {\n  padding-left: 170px;\n}\n.level-9 {\n  padding-left: 190px;\n}\n.level-10 {\n  padding-left: 210px;\n}\n.level-11 {\n  padding-left: 230px;\n}\n.level-12 {\n  padding-left: 250px;\n}\n.level-13 {\n  padding-left: 270px;\n}\n.level-14 {\n  padding-left: 290px;\n}\n.level-15 {\n  padding-left: 310px;\n}\n.level-16 {\n  padding-left: 330px;\n}\n.level-17 {\n  padding-left: 350px;\n}\n.level-18 {\n  padding-left: 370px;\n}\n.level-19 {\n  padding-left: 390px;\n}\n.level-20 {\n  padding-left: 410px;\n}\n.level-21 {\n  padding-left: 430px;\n}\n.level-22 {\n  padding-left: 450px;\n}\n.level-23 {\n  padding-left: 470px;\n}\n.level-24 {\n  padding-left: 490px;\n}\n.level-25 {\n  padding-left: 510px;\n}\n.level-26 {\n  padding-left: 530px;\n}\n.level-27 {\n  padding-left: 550px;\n}\n.level-28 {\n  padding-left: 570px;\n}\n.level-29 {\n  padding-left: 590px;\n}\n.level-30 {\n  padding-left: 610px;\n}\n/*\n  Employee table\n*/\n.employees-table {\n  border-bottom: 1px solid #cccccc;\n}\n.employees-table__td {\n  border: 1px solid #cccccc;\n  border-bottom: 0px;\n  color: #444444;\n  font-family: helvetica;\n  font-size: 13px;\n  font-weight: bold;\n  padding-bottom: 10px;\n  padding-top: 10px;\n}\n", ""]);
+	exports.push([module.id, "/* vars */\n/* Generic */\n.container {\n  padding: 30px 20px;\n  width: 100%;\n}\n.container--bg-dark {\n  background: #000000;\n}\n.container--bg-yellow {\n  background-color: #ebe66d;\n}\n/* header */\n.header__title {\n  color: #ffffff;\n  font-size: 20px;\n}\n/* form */\n/* Class \"indentation\" generator */\n.level-1 {\n  padding-left: 30px;\n}\n.level-2 {\n  padding-left: 50px;\n}\n.level-3 {\n  padding-left: 70px;\n}\n.level-4 {\n  padding-left: 90px;\n}\n.level-5 {\n  padding-left: 110px;\n}\n.level-6 {\n  padding-left: 130px;\n}\n.level-7 {\n  padding-left: 150px;\n}\n.level-8 {\n  padding-left: 170px;\n}\n.level-9 {\n  padding-left: 190px;\n}\n.level-10 {\n  padding-left: 210px;\n}\n.level-11 {\n  padding-left: 230px;\n}\n.level-12 {\n  padding-left: 250px;\n}\n.level-13 {\n  padding-left: 270px;\n}\n.level-14 {\n  padding-left: 290px;\n}\n.level-15 {\n  padding-left: 310px;\n}\n.level-16 {\n  padding-left: 330px;\n}\n.level-17 {\n  padding-left: 350px;\n}\n.level-18 {\n  padding-left: 370px;\n}\n.level-19 {\n  padding-left: 390px;\n}\n.level-20 {\n  padding-left: 410px;\n}\n.level-21 {\n  padding-left: 430px;\n}\n.level-22 {\n  padding-left: 450px;\n}\n.level-23 {\n  padding-left: 470px;\n}\n.level-24 {\n  padding-left: 490px;\n}\n.level-25 {\n  padding-left: 510px;\n}\n.level-26 {\n  padding-left: 530px;\n}\n.level-27 {\n  padding-left: 550px;\n}\n.level-28 {\n  padding-left: 570px;\n}\n.level-29 {\n  padding-left: 590px;\n}\n.level-30 {\n  padding-left: 610px;\n}\n/* Employee table */\n.employees-table {\n  border-bottom: 1px solid #cccccc;\n}\n.employees-table__td {\n  border: 1px solid #cccccc;\n  border-bottom: 0px;\n  color: #444444;\n  font-family: helvetica;\n  font-size: 13px;\n  font-weight: bold;\n  padding-bottom: 10px;\n  padding-top: 10px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 723 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(724);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(720)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./reset.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./reset.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 724 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(719)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Global Reset of all HTML Elements\n *\n * Resetting all of our HTML Elements ensures a smoother\n * visual transition between browsers. If you don't believe me,\n * try temporarily commenting out this block of code, then go\n * and look at Mozilla versus Safari, both good browsers with\n * a good implementation of CSS. The thing is, all browser CSS\n * defaults are different and at the end of the day if visual\n * consistency is what we're shooting for, then we need to\n * make sure we're resetting all spacing elements.\n *\n */\nhtml,\nbody {\n  border: 0;\n  font-family: \"Helvetica-Neue\", \"Helvetica\", Arial, sans-serif;\n  line-height: 1.5;\n  margin: 0;\n  padding: 0;\n}\ndiv,\nspan,\nobject,\niframe,\nimg,\ntable,\ncaption,\nthead,\ntbody,\ntfoot,\ntr,\ntr,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nfigure,\nhgroup,\nmenu,\nnav,\nfooter,\nheader,\nsection,\nsummary,\nmark,\naudio,\nvideo {\n  border: 0;\n  margin: 0;\n  padding: 0;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\naddress,\ncit,\ncode,\ndel,\ndfn,\nem,\nins,\nq,\nsamp,\nsmall,\nstrong,\nsub,\nsup,\nb,\ni,\nhr,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nlegend,\nlabel {\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline;\n  margin: 0;\n  padding: 0;\n}\narticle,\naside,\ncanvas,\nfigure,\nfigure img,\nfigcaption,\nhgroup,\nfooter,\nheader,\nnav,\nsection,\naudio,\nvideo {\n  display: block;\n}\ntable {\n  border-collapse: separate;\n  border-spacing: 0;\n}\ntable caption,\ntable th,\ntable td {\n  text-align: left;\n  vertical-align: middle;\n}\na img {\n  border: 0;\n}\n:focus {\n  outline: 0;\n}\n", ""]);
 
 	// exports
 

@@ -1,23 +1,21 @@
-/*
-  Import Dependencies
-*/
 import React from 'react';
-
-/*
-  Import Components
-*/
 import Header from './Header';
 
 class App extends React.Component {
   constructor() {
     super();
   }
+
   render() {
+    let { location, children } = this.props;
+
     return (
     <div>
-        <Header pathname={this.props.location.pathname} />
-        <div className=''>
-          {this.props.children}
+        <div className='container container--bg-dark'>
+          <Header pathname={location.pathname} />
+        </div>
+        <div className='container container--bg-yellow'>
+          {children}
         </div>
       </div>
     );

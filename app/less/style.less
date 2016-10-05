@@ -1,16 +1,39 @@
-/*
-  Generic
-*/
-ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
+/* vars */
+@white: #ffffff;
+@black: #000000;
+@yellow: #ebe66d;
+
+/* Generic */
+.container {
+  padding: 30px 20px;
+  width: 100%;
+
+  &--bg-dark {
+    background: @black;
+  }
+
+  &--bg-yellow {
+    background-color: @yellow;
+  }
 }
 
 
-/*
-  Class "indentation" generator
-*/
+/* header */
+.header {
+
+  &__title {
+    color: @white;
+    font-size: 20px;
+  }
+}
+
+/* form */
+.form {
+
+}
+
+
+/* Class "indentation" generator */
 @indentationNumber: 30;
 
 .generate-columns(@indentationNumber);
@@ -23,9 +46,7 @@ ul {
 }
 
 
-/*
-  Employee table
-*/
+/* Employee table */
 .employees-table {
   border-bottom: 1px solid #cccccc;
 }
