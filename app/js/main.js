@@ -1,6 +1,5 @@
 /* Import CSS */
-require('../less/reset.less');
-require('../less/style.less');
+require('../less/main.less');
 
 /*
   Import Dependencies

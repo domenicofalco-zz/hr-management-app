@@ -1,0 +1,27 @@
+.employees-table {
+  li {
+    list-style: none;
+  }
+
+  &__td {
+    border-bottom: 0px;
+    color: #444444;
+    font-family: helvetica;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+}
+
+/* Class "indentation" generator for table elements */
+@indentationNumber: 30;
+
+.generate-indentation(@indentationNumber);
+
+.generate-indentation(@n, @i: 1) when (@i =< @n) {
+  .level-@{i} {
+    padding-left: (@i * 20 + 10px);
+  }
+  .generate-indentation(@n, (@i + 1));
+}
