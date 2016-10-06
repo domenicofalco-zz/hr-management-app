@@ -15,7 +15,7 @@
 • If no errors, the webpage will open up automatically<br />
 • Start playing with it<br />
 <br /><br />
-<strong>GENERAL NOTE</strong><br />
+<strong>GENERAL NOTES</strong><br />
 • The dev folder is “/app”<br />
 • Some mock-data you might use to test the web app, are in the folder “app/example-data”<br />
 • Node version >= 4.4.5<br />
