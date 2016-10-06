@@ -59,9 +59,10 @@ class EmployeesViewList extends React.Component {
   }
 
   render() {
+    //<SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
     return (
       <div className='employees-table'>
-        <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
+        {this.props.items}
       </div>
     )
   }

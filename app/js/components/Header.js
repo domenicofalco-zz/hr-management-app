@@ -12,13 +12,13 @@ class Header extends React.Component {
       top: '40px',
       opacity: 0,
       position: 'relative'
-    }, 0.2);
+    }, 0.1);
 
     TweenMax.staggerTo(domElements, 1, {
       top: 0,
       opacity: 1,
       ease: Power4.easeInOut
-    }, 0.2);
+    }, 0.1);
 
   }
 
