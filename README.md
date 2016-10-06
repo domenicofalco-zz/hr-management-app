@@ -7,7 +7,7 @@
 • BEM concept & method for class naming<br />
 • Webpack<br />
 <br /><br />
-<strong>INSTRUCTION</strong><br />
+<strong>INSTRUCTIONS</strong><br />
 • Clone the git-repo in a folder of your choice<br />
 • Once the checkout is done, navigate to that folder by your terminal<br />
 • Run “npm install”<br />
