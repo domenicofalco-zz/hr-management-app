@@ -28,7 +28,6 @@
     "css-loader": "0.23.1",
     "express": "^4.14.0",
     "gsap": "^1.19.0",
-    "history": "^4.3.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "opener": "^1.4.2",

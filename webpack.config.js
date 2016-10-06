@@ -36,7 +36,6 @@ module.exports = {
 			}
 		]
 	}
-	/*FOR PRODUCTION
 	plugins:[
     new webpack.optimize.UglifyJsPlugin({
       compress:{
@@ -44,5 +43,5 @@ module.exports = {
 				source: false
       }
     })
-  ]*/
+  ]
 };
