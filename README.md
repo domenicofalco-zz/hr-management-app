@@ -1,5 +1,5 @@
 # hr-management-app
-FRONTEND STACK<br />
+<strong>FRONTEND STACK</strong><br />
 • ReactJs + React Router + Redux<br />
 • ES6 / ES7 with Babel<br />
 • Tweenmax (GSAP) for JS animations<br />
@@ -7,7 +7,7 @@ FRONTEND STACK<br />
 • BEM concept & method for class naming<br />
 • Webpack<br />
 <br /><br />
-INSTRUCTION<br />
+<strong>INSTRUCTION</strong><br />
 • Clone the git-repo in a folder of your choice<br />
 • Once the checkout is done, navigate to that folder by your terminal<br />
 • Run “npm install”<br />
@@ -15,7 +15,7 @@ INSTRUCTION<br />
 • If no errors, the webpage will open up automatically<br />
 • Start playing with it<br />
 <br /><br />
-GENERAL NOTE<br />
+<strong>GENERAL NOTE</strong><br />
 • The dev folder is “/app”<br />
 • Some mock-data you might use to test the web app, are in the folder “app/example-data”<br />
 • Node version >= 4.4.5<br />
