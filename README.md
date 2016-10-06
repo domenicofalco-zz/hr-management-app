@@ -1,22 +1,22 @@
 # hr-management-app
-FRONTEND STACK
+FRONTEND STACK<br />
 • ReactJs + React Router + Redux<br />
-• ES6 / ES7 with Babel
-• Tweenmax (GSAP) for JS animations
-• LESS
-• BEM concept & method for class naming
-• Webpack
-
-INSTRUCTION
-• Clone the git-repo in a folder of your choice
-• Once the checkout is done, navigate to that folder by your terminal
-• Run “npm install”
-• Once the installation is completed run “npm start”
-• If no errors, the webpage will open up automatically
-• Start playing with it
-
-GENERAL NOTE
-• The dev folder is “/app”
-• Some mock-data you might use to test the web app, are in the folder “app/example-data”
-• Node version >= 4.4.5
-• Git Repo branch to use: Master
+• ES6 / ES7 with Babel<br />
+• Tweenmax (GSAP) for JS animations<br />
+• LESS<br />
+• BEM concept & method for class naming<br />
+• Webpack<br />
+<br /><br />
+INSTRUCTION<br />
+• Clone the git-repo in a folder of your choice<br />
+• Once the checkout is done, navigate to that folder by your terminal<br />
+• Run “npm install”<br />
+• Once the installation is completed run “npm start”<br />
+• If no errors, the webpage will open up automatically<br />
+• Start playing with it<br />
+<br /><br />
+GENERAL NOTE<br />
+• The dev folder is “/app”<br />
+• Some mock-data you might use to test the web app, are in the folder “app/example-data”<br />
+• Node version >= 4.4.5<br />
+• Git Repo branch to use: Master<br />
