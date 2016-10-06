@@ -14,7 +14,29 @@
                               "Pete":{
                                  "position":"Backend Engineer",
                                  "employees":[
+                                   {
+                                      "Rta":{
+                                         "position":"IT Engineer",
+                                         "employees":[
+                                           {
+                                              "Peter":{
+                                                 "position":"Junior Engineer",
+                                                 "employees":[
 
+                                                 ]
+                                              }
+                                           }
+                                         ]
+                                      }
+                                   },
+                                   {
+                                      "Estera":{
+                                         "position":"Tester",
+                                         "employees":[
+
+                                         ]
+                                      }
+                                   }
                                  ]
                               }
                            },

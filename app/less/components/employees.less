@@ -1,27 +1,74 @@
-.employees-table {
-  li {
+.employees-list {
+  transform: translateY(30px);
+  opacity: 0;
+  padding-top: 10%;
+
+  & > ul > li {
+    padding-left: 0px;
+  }
+
+  &__item {
+    font-family: @PTSans;
     list-style: none;
+    padding-left: 20px;
   }
 
-  &__td {
-    border-bottom: 0px;
-    color: #444444;
-    font-family: helvetica;
-    font-size: 13px;
+  &__info {
+    line-height: 18px;
+    padding: 0px 0px 10px 22px;
+    position: relative;
+  }
+
+  &__name {
+    color: @blue;
+    display: block;
+    font-size: 18px;
     font-weight: bold;
-    padding-bottom: 10px;
-    padding-top: 10px;
   }
-}
 
-/* Class "indentation" generator for table elements */
-@indentationNumber: 30;
-
-.generate-indentation(@indentationNumber);
-
-.generate-indentation(@n, @i: 1) when (@i =< @n) {
-  .level-@{i} {
-    padding-left: (@i * 20 + 10px);
+  &__position {
+    color: @grey;
+    display: block;
+    font-size: 13px;
   }
-  .generate-indentation(@n, (@i + 1));
+
+  &__collapse {
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 13px;
+    height: 13px;
+
+    .line-horz,
+    .line-vert {
+      background: @lightRed;
+      display: block;
+      position: absolute;
+    }
+
+    .line-vert {
+      height: 100%;
+      left: 50%;
+      margin-left: -1px;
+      top: 0;
+      width: 2px;
+      transition: all .3s;
+    }
+
+    .line-horz {
+      height: 2px;
+      left: 0px;
+      margin-top: -1px;
+      top: 50%;
+      width: 100%;
+    }
+
+    &--close {
+      .line-vert {
+        transform: rotate(90deg);
+      }
+    }
+
+  }
+
 }

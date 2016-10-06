@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { history } from '../store';
 import { TweenMax, Power4 } from 'gsap';
 
 /* component */
@@ -29,7 +30,8 @@ class Home extends React.Component {
     super();
 
     this.submitJson = this.submitJson.bind(this);
-    this.showNext = this.showNext.bind(this);
+    this.showFeedback = this.showFeedback.bind(this);
+    this.goToListPage = this.goToListPage.bind(this);
   }
 
   submitJson(e) {
@@ -58,28 +60,39 @@ class Home extends React.Component {
     this.props.dispatch(actionClearState());
   }
 
-  showNext() {
-    TweenMax.from(this.refs.nextStep, .8, {
+  showFeedback() {
+    TweenMax.from(this.refs.feedback, .8, {
       top: '15px',
       position: 'relative',
       opacity: 0
     });
-    TweenMax.to(this.refs.nextStep, .8, {
+    TweenMax.to(this.refs.feedback, .8, {
       top: 0,
       opacity: 1,
       ease: Power4.easeInOut
     });
   }
 
+  goToListPage(e) {
+    e.preventDefault();
+
+    TweenMax.to(this.refs.form, .8, {
+      transform: 'translateY(30px)',
+      opacity: 0,
+      ease: Power4.easeInOut,
+      onComplete: () => history.push('/employees')
+    });
+  }
+
   componentDidUpdate() {
-    this.showNext();
+    this.showFeedback();
   }
 
   render() {
     let { isLoaded, failed, errorMsg } = this.props;
 
     return (
-      <form className='form'>
+      <form ref='form' className='form'>
 
         <label className='form__label label'>Choose your JSON file</label>
 
@@ -93,17 +106,13 @@ class Home extends React.Component {
         />
 
         {isLoaded &&
-          <span ref='nextStep' className='form__button button button--blue'>
-            <Link
-              ref='upload'
-              to={'employees'}>
-              upload
-            </Link>
+          <span ref='feedback' className='form__button button button--blue'>
+            <a onClick={this.goToListPage} ref='upload' href='#'>upload</a>
           </span>
         }
 
         {failed &&
-          <span ref='nextStep' className='error error--red'>{errorMsg}</span>
+          <span ref='feedback' className='error error--red'>{errorMsg}</span>
         }
       </form>
     );

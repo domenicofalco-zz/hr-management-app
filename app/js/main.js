@@ -22,7 +22,7 @@ import store, { history } from './store';
 */
 import App from './components/App';
 import Home from './components/Home';
-import EmployeesView from './components/EmployeesView';
+import EmployeesViewList from './components/EmployeesViewList';
 import PageNotFound from './components/PageNotFound';
 
 ReactDOM.render(
@@ -30,7 +30,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={Home} />
-        <Route path='employees' component={EmployeesView} />
+        <Route path='employees' component={EmployeesViewList} />
         <Route path='*' component={PageNotFound} />
       </Route>
     </Router>

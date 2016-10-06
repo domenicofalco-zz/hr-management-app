@@ -19,7 +19,6 @@ class Header extends React.Component {
       opacity: 1,
       ease: Power4.easeInOut
     }, 0.1);
-
   }
 
   render() {
