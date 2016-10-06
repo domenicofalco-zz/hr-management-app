@@ -8226,31 +8226,26 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _EmployeesViewList = __webpack_require__(588);
+	var _EmployeesViewList = __webpack_require__(582);
 
 	var _EmployeesViewList2 = _interopRequireDefault(_EmployeesViewList);
 
-	var _PageNotFound = __webpack_require__(583);
+	var _PageNotFound = __webpack_require__(584);
 
 	var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/* Import CSS */
-	__webpack_require__(584);
+	__webpack_require__(585);
 
-	/*
-	  Import Dependencies
-	*/
+	/* Import Dependencies */
 
 
-	/*
-	  Data store
-	*/
+	/* Data store */
 
-	/*
-	  Import Components
-	*/
+
+	/* Import Components */
 
 
 	_reactDom2.default.render(_react2.default.createElement(
@@ -45526,8 +45521,233 @@
 	exports.actionClearState = actionClearState;
 
 /***/ },
-/* 582 */,
+/* 582 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class; /* Dependencies */
+
+
+	/* Component */
+
+
+	var _react = __webpack_require__(308);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(541);
+
+	var _store = __webpack_require__(563);
+
+	var _gsap = __webpack_require__(577);
+
+	var _EmployeesViewItem = __webpack_require__(583);
+
+	var _EmployeesViewItem2 = _interopRequireDefault(_EmployeesViewItem);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**/
+	var EmployeesViewList = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    json: store.employees.jsonEmployees,
+	    isLoaded: store.employees.isLoaded
+	  };
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(EmployeesViewList, _React$Component);
+
+	  function EmployeesViewList() {
+	    _classCallCheck(this, EmployeesViewList);
+
+	    return _possibleConstructorReturn(this, (EmployeesViewList.__proto__ || Object.getPrototypeOf(EmployeesViewList)).apply(this, arguments));
+	  }
+
+	  _createClass(EmployeesViewList, [{
+	    key: 'generateEmployeesTree',
+	    value: function generateEmployeesTree(data) {
+	      var _this2 = this;
+
+	      var generateEmployeesSubTree = function generateEmployeesSubTree(employees) {
+	        return _react2.default.createElement(
+	          'ul',
+	          null,
+	          _this2.generateEmployeesTree(employees)
+	        );
+	      };
+
+	      return data.map(function (node, index) {
+	        var name = Object.keys(node)[0];
+	        var position = node[name].position;
+	        var employees = node[name].employees;
+	        var hasEmployees = employees.length > 0;
+
+	        return _react2.default.createElement(
+	          _EmployeesViewItem2.default,
+	          {
+	            key: index,
+	            name: name,
+	            position: position,
+	            hasSubTree: hasEmployees
+	          },
+	          generateEmployeesSubTree(employees)
+	        );
+	      });
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      // redirect to homepage is no JSON is available
+	      if (!this.props.isLoaded) {
+	        _store.history.push('/');
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _gsap.TweenMax.to(this.refs.list, .8, {
+	        transform: 'translateY(0)',
+	        opacity: 1,
+	        ease: _gsap.Power4.easeInOut
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var json = this.props.json;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'employees-list', ref: 'list' },
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'employees-list__label label' },
+	          'Your company hierarchy'
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          json && this.generateEmployeesTree([json])
+	        )
+	      );
+	    }
+	  }]);
+
+	  return EmployeesViewList;
+	}(_react2.default.Component)) || _class);
+	exports.default = EmployeesViewList;
+
+/***/ },
 /* 583 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(308);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EmployeesViewItem = function (_React$Component) {
+	  _inherits(EmployeesViewItem, _React$Component);
+
+	  function EmployeesViewItem() {
+	    _classCallCheck(this, EmployeesViewItem);
+
+	    var _this = _possibleConstructorReturn(this, (EmployeesViewItem.__proto__ || Object.getPrototypeOf(EmployeesViewItem)).call(this));
+
+	    _this.state = { isOpened: false };
+	    _this.openEmployeesSubList = _this.openEmployeesSubList.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(EmployeesViewItem, [{
+	    key: 'openEmployeesSubList',
+	    value: function openEmployeesSubList(e) {
+	      e.preventDefault();
+
+	      this.setState({
+	        isOpened: !this.state.isOpened
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var hasSubTree = _props.hasSubTree;
+	      var name = _props.name;
+	      var position = _props.position;
+	      var children = _props.children;
+	      var isOpened = this.state.isOpened;
+
+
+	      return _react2.default.createElement(
+	        'li',
+	        { className: 'employees-list__item' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'employees-list__info' },
+	          hasSubTree && _react2.default.createElement(
+	            'a',
+	            {
+	              href: '#',
+	              onClick: this.openEmployeesSubList,
+	              className: 'employees-list__collapse' + (isOpened ? ' employees-list__collapse--close' : '')
+	            },
+	            _react2.default.createElement('span', { className: 'line-horz' }),
+	            _react2.default.createElement('span', { className: 'line-vert' })
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'employees-list__name' },
+	            name
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'employees-list__position' },
+	            position
+	          )
+	        ),
+	        hasSubTree && isOpened && children
+	      );
+	    }
+	  }]);
+
+	  return EmployeesViewItem;
+	}(_react2.default.Component);
+
+	;
+
+	exports.default = EmployeesViewItem;
+
+/***/ },
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45581,16 +45801,16 @@
 	exports.default = PageNotFound;
 
 /***/ },
-/* 584 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(585);
+	var content = __webpack_require__(586);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(587)(content, {});
+	var update = __webpack_require__(588)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -45607,10 +45827,10 @@
 	}
 
 /***/ },
-/* 585 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(586)();
+	exports = module.exports = __webpack_require__(587)();
 	// imports
 
 
@@ -45621,7 +45841,7 @@
 
 
 /***/ },
-/* 586 */
+/* 587 */
 /***/ function(module, exports) {
 
 	/*
@@ -45677,7 +45897,7 @@
 
 
 /***/ },
-/* 587 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -45927,376 +46147,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 588 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _dec, _class; /* Dependencies */
-
-
-	/* Component */
-
-
-	var _react = __webpack_require__(308);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(541);
-
-	var _store = __webpack_require__(563);
-
-	var _gsap = __webpack_require__(577);
-
-	var _EmployeesViewItem = __webpack_require__(733);
-
-	var _EmployeesViewItem2 = _interopRequireDefault(_EmployeesViewItem);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	/**/
-	var EmployeesViewList = (_dec = (0, _reactRedux.connect)(function (store) {
-	  return {
-	    json: store.employees.jsonEmployees,
-	    isLoaded: store.employees.isLoaded
-	  };
-	}), _dec(_class = function (_React$Component) {
-	  _inherits(EmployeesViewList, _React$Component);
-
-	  function EmployeesViewList() {
-	    _classCallCheck(this, EmployeesViewList);
-
-	    return _possibleConstructorReturn(this, (EmployeesViewList.__proto__ || Object.getPrototypeOf(EmployeesViewList)).apply(this, arguments));
-	  }
-
-	  _createClass(EmployeesViewList, [{
-	    key: 'generateEmployeesTree',
-	    value: function generateEmployeesTree(data) {
-	      var _this2 = this;
-
-	      var generateEmployeesSubTree = function generateEmployeesSubTree(employees) {
-	        return _react2.default.createElement(
-	          'ul',
-	          null,
-	          _this2.generateEmployeesTree(employees)
-	        );
-	      };
-
-	      return data.map(function (node, index) {
-	        var name = Object.keys(node)[0];
-	        var position = node[name].position;
-	        var employees = node[name].employees;
-	        var hasEmployees = employees.length > 0;
-
-	        return _react2.default.createElement(
-	          _EmployeesViewItem2.default,
-	          {
-	            key: index,
-	            name: name,
-	            position: position,
-	            hasSubTree: hasEmployees
-	          },
-	          generateEmployeesSubTree(employees)
-	        );
-	      });
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      // redirect to homepage is no JSON is available
-	      if (!this.props.isLoaded) {
-	        _store.history.push('/');
-	      }
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _gsap.TweenMax.to(this.refs.list, .8, {
-	        transform: 'translateY(0)',
-	        opacity: 1,
-	        ease: _gsap.Power4.easeInOut
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var json = this.props.json;
-
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'employees-list', ref: 'list' },
-	        _react2.default.createElement(
-	          'label',
-	          { className: 'employees-list__label label' },
-	          'Your company hierarchy'
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          json && this.generateEmployeesTree([json])
-	        )
-	      );
-	    }
-	  }]);
-
-	  return EmployeesViewList;
-	}(_react2.default.Component)) || _class);
-	exports.default = EmployeesViewList;
-
-/***/ },
-/* 589 */,
-/* 590 */,
-/* 591 */,
-/* 592 */,
-/* 593 */,
-/* 594 */,
-/* 595 */,
-/* 596 */,
-/* 597 */,
-/* 598 */,
-/* 599 */,
-/* 600 */,
-/* 601 */,
-/* 602 */,
-/* 603 */,
-/* 604 */,
-/* 605 */,
-/* 606 */,
-/* 607 */,
-/* 608 */,
-/* 609 */,
-/* 610 */,
-/* 611 */,
-/* 612 */,
-/* 613 */,
-/* 614 */,
-/* 615 */,
-/* 616 */,
-/* 617 */,
-/* 618 */,
-/* 619 */,
-/* 620 */,
-/* 621 */,
-/* 622 */,
-/* 623 */,
-/* 624 */,
-/* 625 */,
-/* 626 */,
-/* 627 */,
-/* 628 */,
-/* 629 */,
-/* 630 */,
-/* 631 */,
-/* 632 */,
-/* 633 */,
-/* 634 */,
-/* 635 */,
-/* 636 */,
-/* 637 */,
-/* 638 */,
-/* 639 */,
-/* 640 */,
-/* 641 */,
-/* 642 */,
-/* 643 */,
-/* 644 */,
-/* 645 */,
-/* 646 */,
-/* 647 */,
-/* 648 */,
-/* 649 */,
-/* 650 */,
-/* 651 */,
-/* 652 */,
-/* 653 */,
-/* 654 */,
-/* 655 */,
-/* 656 */,
-/* 657 */,
-/* 658 */,
-/* 659 */,
-/* 660 */,
-/* 661 */,
-/* 662 */,
-/* 663 */,
-/* 664 */,
-/* 665 */,
-/* 666 */,
-/* 667 */,
-/* 668 */,
-/* 669 */,
-/* 670 */,
-/* 671 */,
-/* 672 */,
-/* 673 */,
-/* 674 */,
-/* 675 */,
-/* 676 */,
-/* 677 */,
-/* 678 */,
-/* 679 */,
-/* 680 */,
-/* 681 */,
-/* 682 */,
-/* 683 */,
-/* 684 */,
-/* 685 */,
-/* 686 */,
-/* 687 */,
-/* 688 */,
-/* 689 */,
-/* 690 */,
-/* 691 */,
-/* 692 */,
-/* 693 */,
-/* 694 */,
-/* 695 */,
-/* 696 */,
-/* 697 */,
-/* 698 */,
-/* 699 */,
-/* 700 */,
-/* 701 */,
-/* 702 */,
-/* 703 */,
-/* 704 */,
-/* 705 */,
-/* 706 */,
-/* 707 */,
-/* 708 */,
-/* 709 */,
-/* 710 */,
-/* 711 */,
-/* 712 */,
-/* 713 */,
-/* 714 */,
-/* 715 */,
-/* 716 */,
-/* 717 */,
-/* 718 */,
-/* 719 */,
-/* 720 */,
-/* 721 */,
-/* 722 */,
-/* 723 */,
-/* 724 */,
-/* 725 */,
-/* 726 */,
-/* 727 */,
-/* 728 */,
-/* 729 */,
-/* 730 */,
-/* 731 */,
-/* 732 */,
-/* 733 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(308);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var EmployeesViewItem = function (_React$Component) {
-	  _inherits(EmployeesViewItem, _React$Component);
-
-	  function EmployeesViewItem() {
-	    _classCallCheck(this, EmployeesViewItem);
-
-	    var _this = _possibleConstructorReturn(this, (EmployeesViewItem.__proto__ || Object.getPrototypeOf(EmployeesViewItem)).call(this));
-
-	    _this.state = { isOpened: false };
-	    _this.openEmployeesSubList = _this.openEmployeesSubList.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(EmployeesViewItem, [{
-	    key: 'openEmployeesSubList',
-	    value: function openEmployeesSubList(e) {
-	      e.preventDefault();
-
-	      this.setState({
-	        isOpened: !this.state.isOpened
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var hasSubTree = _props.hasSubTree;
-	      var name = _props.name;
-	      var position = _props.position;
-	      var children = _props.children;
-	      var isOpened = this.state.isOpened;
-
-
-	      return _react2.default.createElement(
-	        'li',
-	        { className: 'employees-list__item' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'employees-list__info' },
-	          hasSubTree && _react2.default.createElement(
-	            'a',
-	            {
-	              href: '#',
-	              onClick: this.openEmployeesSubList,
-	              className: 'employees-list__collapse' + (isOpened ? ' employees-list__collapse--close' : '')
-	            },
-	            _react2.default.createElement('span', { className: 'line-horz' }),
-	            _react2.default.createElement('span', { className: 'line-vert' })
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'employees-list__name' },
-	            name
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'employees-list__position' },
-	            position
-	          )
-	        ),
-	        hasSubTree && isOpened && children
-	      );
-	    }
-	  }]);
-
-	  return EmployeesViewItem;
-	}(_react2.default.Component);
-
-	;
-
-	exports.default = EmployeesViewItem;
 
 /***/ }
 /******/ ]);

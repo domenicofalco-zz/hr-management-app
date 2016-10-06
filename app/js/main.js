@@ -1,25 +1,17 @@
 /* Import CSS */
 require('../less/main.less');
 
-/*
-  Import Dependencies
-*/
+/* Import Dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import 'babel-polyfill';
 
-
-/*
-  Data store
-*/
-
+/* Data store */
 import store, { history } from './store';
 
-/*
-  Import Components
-*/
+/* Import Components */
 import App from './components/App';
 import Home from './components/Home';
 import EmployeesViewList from './components/EmployeesViewList';
