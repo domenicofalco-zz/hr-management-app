@@ -1,6 +1,6 @@
 # hr-management-app
 FRONTEND STACK
-• ReactJs + React Router + Redux
+• ReactJs + React Router + Redux<br />
 • ES6 / ES7 with Babel
 • Tweenmax (GSAP) for JS animations
 • LESS
