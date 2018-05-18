@@ -1,4 +1,7 @@
 # hr-management-app
+<strong>Description</strong><br />
+This is a simple HR app based on the latest tecnologies which gets a JSON file as input which represents the company hierarchy and print it out in a more friendly/interactive view.<br /><br />
+<strong>*** The JSON you might need to test it are "./app/example-data/*" ***</strong><br /><br />
 <strong>FRONTEND STACK</strong><br />
 • ReactJs + React Router + Redux<br />
 • ES6 / ES7 with Babel<br />
